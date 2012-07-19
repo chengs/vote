@@ -1,0 +1,84 @@
+<!-- header before Content -->
+<include file="Public:header" />
+<!-- 介绍页面 -->
+<div id="introduction">
+    <h1>{$config.introductionTitle}</h1>
+    <div>
+        {$config.introduction}
+    </div>
+    <p>
+        <strong>投票说明:</strong>
+        {$config.introductionMethodStr}
+    </p>
+    <p>
+        <strong>投票时间:</strong>
+        {$config.startTime|date="Y-m-d h:i:s",###}开始 至 {$config.endTime|date="Y-m-d h:i:s",###}截止
+    </p>
+</div>
+<!-- 投票列表 -->
+<h1>{$config.itemName} <span class="small">({$config.sortTypeStr})</span></h1>
+<div class="votelist row">
+    <div class="span12">
+        <ul class="thumbnails">
+            <foreach name="voteItem" item="item">
+                <li class="span4">
+                    <a href="index.php?a=introduction&id={$item.id}" class="thumbnail btn-ppt" name="id-{$item.id}"> <img src="./Data/item{$item.id}/logo.png" alt="pic-{$item.id}" style="width: 290px;height: 215px;" /> </a>
+                    <div class="listintro">
+                        <h3>{$item.title}
+                        <if condition="isAdmin()">
+                            <span><a href="./index.php?a=edit&id={$item.id}">[编辑]</a></span>
+                        </if></h3>
+                        <p>
+                            {$item.subtitle}
+                        </p>
+                        <p>
+                            {$item.count}票
+                        </p>
+                        <div>
+                            <a href="index.php?a=introduction&id={$item.id}" class="btn btn-info"> 查看介绍 </a>
+                            <a href="#" class="btn btn-success btn-ppt" name='id-{$item.id}'> 查看PPT </a>
+                            <button name='id-{$item.id}' class="btn btn-danger btn-vote">
+                                投票
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </foreach>
+        </ul>
+    </div>
+</div>
+<!-- 未激活列表 -->
+<if condition="isAdmin()">
+    <notempty name='voteItemNotEnable'>
+        <h1>未激活{$config.itemName}</h1>
+        <div class="votelist row">
+            <div class="span12">
+                <ul class="thumbnails">
+                    <foreach name="voteItemNotEnable" item="item">
+                        <li class="span4">
+                            <a href="index.php?a=introduction&id={$item.id}" class="thumbnail btn-ppt" name="id-{$item.id}"> <img src="./Data/item{$item.id}/logo.png" alt="pic-{$item.id}" style="width: 290px;height: 215px;" /> </a>
+                            <div class="listintro">
+                                <h3>{$item.title}
+                                <if condition="isAdmin()">
+                                    <span><a href="./index.php?a=edit&id={$item.id}">[编辑]</a></span>
+                                </if></h3>
+                                <p>
+                                    {$item.subtitle}
+                                </p>
+                                <p>
+                                    {$item.count}票
+                                </p>
+                                <div>
+                                    <a href="index.php?a=introduction&id={$item.id}" class="btn btn-info"> 查看介绍 </a>
+                                    <a href="#" class="btn btn-success btn-ppt" name='id-{$item.id}'> 查看PPT </a>
+                                </div>
+                            </div>
+                        </li>
+                    </foreach>
+                </ul>
+            </div>
+        </div>
+    </notempty>
+</if>
+<!-- footer after content -->
+<include file="Public:footer" />

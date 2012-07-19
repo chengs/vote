@@ -1,0 +1,69 @@
+<!-- header before Content -->
+<include file="Public:header" />
+<div id="introduction">
+    <h1> {$config.itemName} : {$item.title} - {$item.subtitle}&nbsp;&nbsp;当前票数:{$item.count}票
+    <if condition="isAdmin()">
+        <span><a href="./index.php?a=edit&id={$item.id}">[编辑]</a></span>
+    </if><span class="small" style="float: right"><a href="__APP__">[返回首页]</a></span></h1>
+    <div class="row">
+        <!-- movie and video -->
+        <div class="span5">
+            <ul class="thumbnails">
+                <li class="span5">
+                    <a href="#" class="thumbnail btn-ppt" name="id-{$item.id}"> <img src="./Data/item{$item.id}/logo.png" alt="pic-{$item.id}" style="width: 360px;height: 268px;" /> </a>
+                </li>
+                <br />
+                <br />
+                <li class="span5">
+                    <div class="thumbnail">
+                        <div id="mediaplayer">
+                            <!-- jwplayer start -->
+                            <load href="./Public/jwplayer/jwplayer.js" />
+                            <!--
+                            <embed
+                            id='player'
+                            name='player'
+                            src='./Public/jwplayer/player.swf'
+                            skin='./Public/jwplayer/glow.zip'
+                            stretching='fill'
+                            width='100%'
+                            height='268'
+                            allowfullscreen='true'
+                            flashvars='file=../../Data/item{$item.id}/video.mp4'
+                            wmode='opaque'
+                            /> -->
+                            <script type="text/javascript">
+								jwplayer('mediaplayer').setup({
+									'stretching':'fill',
+									'skin':'./Public/jwplayer/glow.zip',
+									'flashplayer' : './Public/jwplayer/player.swf',
+									'id' : 'player',
+									'name':'player',
+									'width' : '100%',
+									'height' : '268',
+									'file' : './Data/item{$item.id}/video.mp4',
+								});
+
+                            </script>
+                            <!-- jwplayer end -->
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- text introduction -->
+        <div class="span7">
+            <div id="buttons">
+                <a href="#" class="btn btn-success btn-ppt" name='id-{$item.id}'> 查看PPT </a>
+                <button name='id-{$item.id}' class="btn btn-danger btn-vote">
+                    投票
+                </button>
+            </div>
+            <div id="introductionText">
+                {$item.introduction}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- footer after content -->
+<include file="Public:footer" />

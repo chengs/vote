@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <header>
+        <title>{$config.sitename}</title>
+        <!-- jquery -->
+        <load href="./Public/lib/jquery-1.7.2.min.js" />
+        <!-- bootstrap -->
+        <load href="./Public/bootstrap/js/bootstrap.min.js" />
+        <load href="./Public/bootstrap/css/bootstrap.min.css" />
+        <!-- fancy box -->
+        <load href="./Public/fancybox/jquery.mousewheel-3.0.6.pack.js" />
+        <load href="./Public/fancybox/jquery.fancybox.pack.js" />
+        <load href="./Public/fancybox/jquery.fancybox.css" />
+        <load href="./Public/fancybox/helpers/jquery.fancybox-buttons.js" />
+        <load href="./Public/fancybox/helpers/jquery.fancybox-buttons.css" />
+        <!-- styles -->
+        <load href="./Public/style/global.css" />
+        <load href="./Public/style/{$Think.const.ACTION_NAME}.css" />
+        <!-- apps -->
+        <load href="./Public/app.js" />
+    </header>
+    <body>
+        <div id="container">
+            <div id="header" class="container">
+                <!--<h1>{$config.sitename}</h1>-->
+            </div>
+            <div id="content" class="container">
+                <!-- start content -->
+                <if condition="getUser() neq 'unknown'">
+                    <p>
+                        <span><a href="{:U('Index/logout')}">[登出]</a></span>
+                        <if condition="isAdmin()">
+                            <span><a href="{:U('Index/globaloptions')}">[全局参数设置]</a></span>
+                            <span><a href="{:U('Index/edit')}">[增加{$config.itemName}]</a></span>
+                        </if>
+                    </p>
+                </if>

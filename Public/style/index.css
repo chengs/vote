@@ -1,0 +1,43 @@
+/*
+ index.css
+ 首页css文件
+ */
+div#introduction {
+	width: 860px;
+	margin: 0 auto;
+	min-height: 200px;
+	border: 1px solid #72C2AA;
+	margin: 20px auto;
+	padding: 10px 20px;
+}
+div#introduction h1 {
+	font-size: 160%;
+	color: #0A72CA;
+	font-weight: bold;
+	line-height: 2em;
+	margin: 0 -20px 15px -30px;
+	padding: 3px 20px 0 30px;
+	background-color: #B7E5FF;
+	background-image: url(./h1_front.gif);
+	background-repeat: repeat-y;
+}
+div#introduction p {
+	/*	padding: 0 20px;*/
+	font-size: 100%;
+	/*	text-indent: 2em;*/
+	line-height: 1.5em;
+	letter-spacing: 1px;
+	word-wrap: break-word;
+	word-break: normal;
+}
+div#introduction p strong {
+	font-weight: bold;
+	color: #007AE1;
+}
+div.votelist .listintro {
+	/*	padding:5px 10px;*/
+	text-align: center;
+	width: 90%;
+	margin: 0 auto;
+}
+

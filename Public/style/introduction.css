@@ -1,0 +1,13 @@
+#buttons,#introductionText{
+	text-align:left;
+	margin-bottom: 20px;
+}
+#buttons{
+	text-align: center;
+}
+
+#jwplayer{
+	width:360px;
+	height:268px;
+	margin:0 auto;
+}

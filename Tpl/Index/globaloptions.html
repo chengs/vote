@@ -1,0 +1,58 @@
+<!-- header before Content -->
+<include file="Public:header" />
+<load href="./Public/xheditor/xheditor-1.1.13-zh-cn.min.js" />
+<h1>
+    全局参数设置
+    <span class="small" style="float: right"><a href="__APP__">[返回首页]</a></span>
+</h1>
+<form class="form-horizontal" action="__ACTION__" method="post">
+    <fieldset>
+        <center>
+            <div class="alert alert-info">
+                <strong>警告!</strong>如果你不知道意思,请不要修改参数
+            </div>
+            <notempty name="errorMsg">
+                <div class="alert alert-error">
+                    <volist name="errorMsg" id="err" key='i'>
+                        <p>
+                            <strong>错误{$i}</strong>{$err}
+                        </p>
+                    </volist>
+                </div>
+            </notempty>
+        </center>
+        <foreach name="options" item="o">
+            <div class="control-group">
+                <!-- lable -->
+                <label class="control-label" for="sitename">{$o.name}</label>
+                <!-- box -->
+                <div class="controls">
+                    <switch name="o.type">
+                        <case value='text'>
+                            <input type="text" class="input-xlarge span8" id="{$o.key}" name="{$o.key}" value="{$o.value}" />
+                        </case>
+                        <case value='textarea'>
+                            <textarea id="{$o.key}" name="{$o.key}" class="span8 xheditor" style="height:200px;">{$o.value}</textarea>
+                        </case>
+                        <default>
+                            {$o.type}
+                        </default>
+                    </switch>
+                    <!-- help box -->
+                    <notempty name="o.addition">
+                        <p class="help-block">
+                            {$o.addition}
+                        </p>
+                    </notempty>
+                </div>
+            </div>
+        </foreach>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                提交
+            </button>
+        </div>
+    </fieldset>
+</form>
+<!-- footer after content -->
+<include file="Public:footer" />

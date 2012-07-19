@@ -1,0 +1,79 @@
+<!-- header before Content -->
+<include file="Public:header" />
+<load href="./Public/xheditor/xheditor-1.1.13-zh-cn.min.js" />
+<h1> 新增/编辑候选信息 <span class="small" style="float: right"><a href="__APP__">[返回首页]</a></span></h1>
+<form class="form-horizontal" action="{:U('Index/takeedit')}" method="post">
+    <fieldset>
+        <center>
+            <div class="alert alert-info">
+                <strong>警告!</strong>如果你不知道意思,请不要修改参数
+            </div>
+            <notempty name="errorMsg">
+                <div class="alert alert-error">
+                    <volist name="errorMsg" id="err" key='i'>
+                        <p>
+                            <strong>错误{$i}</strong>{$err}
+                        </p>
+                    </volist>
+                </div>
+            </notempty>
+        </center>
+        <div class="control-group">
+            <label class="control-label" for="sitename">项目ID</label>
+            <div class="controls">
+                <notempty name="item.id">
+                    <span class="input-xlarge uneditable-input">{$item.id}</span>
+                    <input type="hidden" id="id" name="id" value="{$item.id}" />
+                    <else />
+                    <span class="input-xlarge uneditable-input">新增</span>
+                </notempty>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="sitename">标题</label>
+            <div class="controls">
+                <input type="text" class="input-xlarge span8" id="title" name="title" value="{$item.title}" />
+                <p class="help-block">
+                    一行文字,不含HTML
+                </p>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="sitename">子标题</label>
+            <div class="controls">
+                <input type="text" class="input-xlarge span8" id="subtitle" name="subtitle" value="{$item.subtitle}" />
+                <p class="help-block">
+                    一行文字,不含HTML
+                </p>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="sitename">介绍</label>
+            <div class="controls">
+                <textarea id="introduction" name="introduction" class="span8 xheditor" style="height:200px;">{$item.introduction}</textarea>
+                <p class="help-block">
+                    图片请使用其他图床
+                </p>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="sitename">是否激活</label>
+            <div class="controls">
+                <input type="text" class="input-xlarge span2" id="enable" name="enable" value="{$item.enable}" />
+                <p class="help-block">
+                    1为激活,其他为不激活.不激活则不显示也不能投票
+                </p>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                提交
+            </button>
+            <button type='reset' class='btn'>
+                清空
+            </button>
+        </div>
+    </fieldset>
+</form>
+<!-- footer after content -->
+<include file="Public:footer" />
